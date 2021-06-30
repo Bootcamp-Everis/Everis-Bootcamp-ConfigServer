@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  client-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docker-config-service
+    restart: always
+    ports:
+      - 8888:8888
+    networks:
+      app_subnet:
+        aliases:
+          - app_subnet
+        #ipv4_address: 172.20.0.2
+networks:
+  app_subnet:
+    name: app_subnet
+    external: true
